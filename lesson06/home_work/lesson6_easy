@@ -1,0 +1,75 @@
+#______________________EASY_______________________________
+
+# Задача - 1
+# Опишите несколько классов TownCar, SportCar, WorkCar, PoliceCar
+# У каждого класса должны быть следующие аттрибуты:
+# speed, color, name, is_police - Булево значение.
+# А так же несколько методов: go, stop, turn(direction) - которые должны сообщать,
+#  о том что машина поехала, остановилась, повернула(куда)
+
+
+class TownCar:
+    def __init__(self, speed, color, name, is_police = False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+    def go(self):
+        print("Внимание, автомобиль {}, {} цвета, поехал со скоростью {} км/ч по маршруту №90".format(self.name,self.color,self.speed)
+
+
+class SportCar:
+    def __init__(self, speed, color, name, is_police = False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+    def stop(self):
+        print("Болид, {},{} цвета, скорость которого {} км/ч, остановился на дозаправку".format(self.name,self.color,self.speed))
+
+class WorkCar:
+    def __init__(self, speed = 70, color = "black", name = "VW", is_police = False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+    def turn(self):
+        print("Машина {} дорожной службы {} цвета повернула на улицу Грязную, с ограничением скорости {} км/ч".format(self.name,self.color,self.speed)))
+#
+#
+
+# Задача - 2
+# Посмотрите на задачу-1 подумайте как выделить общие признаки классов
+# в родительский и остальные просто наследовать от него.
+
+class SomeCar:
+    def __init__(self, speed, color, name):
+        self.speed = speed
+        self.color = color
+        self.name = name
+
+class TowCar(SomeCar):
+    def __init__(self, speed, color, name, is_police = False):
+        super().__init__(self, speed, color, name)
+        self.is_police = is_police
+    def go(self):
+        print("Внимание, автомобиль {}, {} цвета, поехал со скоростью {} км/ч по маршруту №90".format(self.name,self.color,self.speed)
+
+class SportCar(SomeCar):
+    def __init__(self, speed, color, name, is_police = False):
+        super().__init__(self, speed, color, name)
+        self.is_polise = is_police
+    def stop(self):
+        print("Болид, {},{} цвета, скорость которого {} км/ч, остановился на дозаправку".format(self.name,self.color,self.speed))
+
+class WorkCar(SomeCar):
+    def __init__(self, speed, color, name, is_police = True):
+        super().__init__(self, speed, color, name)
+        self.is_police = is_police
+    def turn(self):
+        print("Машина {} дорожной службы {} цвета повернула на улицу Грязную, с ограничением скорости {} км/ч".format(
+            self.name, self.color, self.speed)))
+
+
+
+
